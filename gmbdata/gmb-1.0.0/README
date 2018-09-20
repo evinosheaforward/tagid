@@ -1,0 +1,141 @@
+Groningen Meaning Bank 1.0.0
+============================
+
+
+Introduction
+------------
+
+The Groningen Meaning Bank (GMB) is a corpus of texts with deep
+semantic annotations.
+
+Key features:
+
+* GMB supports deep, rather than shallow semantics, opening the way to
+  empirical, data-driven approaches to computational semantics.
+
+* GMB integrates phenomena, instead of covering single phenomena in
+  isolation, providing a better handle on explaining dependencies
+  between various ambiguous linguistic phenomena.
+
+* GMB deals with texts, not isolated sentences, providing a means to
+  deal with ambiguities on the sentence level that require discourse
+  context for resolving them.
+
+* GMB comprises only public-domain texts and is distributed without
+  restriction, making it possible to distribute and use the resource
+  without causing a major kerfuffle.
+
+GMB is being built using a bootstrapping approach. We employ
+state-of-the-art NLP tools to produce a reasonable approximation to
+gold-standard annotations.  From release to release, the annotations
+are corrected and refined using human annotations coming from two main
+sources: experts (linguists) and non-experts (players of a game with a
+purpose).
+
+Releases are frozen snapshots. The current version is made available
+via a wiki-like Web interface called GMB Explorer. If you find errors
+in the annotation, you can correct them yourself and thus contribute
+to the resource.
+
+To do so or get more information about the project, visit
+http://gmb.let.rug.nl
+
+
+Directory Layout
+----------------
+
+GMB is partitioned into 100 parts. Each part is identified by a
+two-digit number. A part contains up to 1000 documents. Within a part,
+each document is identified by a four-digit number. The ID of a
+document consists of the part number, followed by a slash, followed by
+the document number, e.g. 00/0030.
+
+gmb-1.0
+    data/                               contains the data
+        p00/                            contains the data for part 00
+            d0030/                      contains the files for document 00/0030
+            ...                                 (see next section)
+        ...
+    README                              this file
+
+
+File Formats
+------------
+
+Every document directory contains six files, all encoded in UTF-8, with
+Unix-style line endings.
+
+en.met
+    Metadata about the document, such as title, data, source, genre, and
+    subcorpus. The format is one key/value pair per line, in the following form:
+    key: value
+
+en.raw
+    The raw text of the document. The standoff annotation (see below) refers to
+    character offsets (not byte offsets) in this document.
+
+en.tok.off
+    Standoff tokenization annotation in a vertical format. It contains one token
+    per line. Columns are separated by one space character. They contain,
+    respectively:
+    1. the character offset of the start of the token
+    2. the character offset of the end of the token
+    3. a token ID, consisting of the number of the token within the sentence
+       (last three digits) and the number of the sentence within the text
+       (all other digits)
+    4. the token itself.
+
+en.tags
+    Contains the annotation of all tokens with various tags, in the vertical
+    format described at
+    <http://svn.ask.it.usyd.edu.au/trac/candc/wiki/IOFormats>. Columns are
+    separated by tabs. They contain, respectively:
+    1. the token itself
+    2. a part-of-speech tag as used in the Penn Treebank
+       <ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz>
+    3. a category as used in CCGBank
+       <www.cis.upenn.edu/departmental/reports/CCGbankManual.pdf>
+    4. a lemma
+    5. a named-entity tag, currently one of
+       * O (no named entity)
+       * I-ART (artifact)
+       * I-DAT (date)
+       * I-LOC (location)
+       * I-MON (money)
+       * I-ORG (organization)
+       * I-PCT (percentage)
+       * I-TIM (time)
+       * I-TTL (title)
+
+en.der.xml
+    Contains derivations (parse trees) of the sentences. The formalism used is
+    Combinatory Categorial Grammar (CCG). The XML format is preliminary, we are
+    working on finalizing the format and releasing a DTD.
+
+en.drs.xml
+    Contains a Discourse Representation Structure (DRS) representing the meaning
+    of the text. The formalism used is Discourse Representation Theory (DRT),
+    extended to use neo-Davidsonian events with roles from VerbNet,
+    presuppositions and rhetorical relations.
+
+
+Statistics
+----------
+
+This release contains
+
+ 1000 documents
+ 4239 sentences
+82752 tokens
+
+
+References
+----------
+
+For details on the tools and formalisms used, see the following paper. Please
+cite this paper if you use GMB in your work.
+
+     Valerio Basile, Johan Bos, Kilian Evang, Noortje Venhuizen (2012):
+     Developing a large semantically annotated corpus. Submitted.
+
+

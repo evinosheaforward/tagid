@@ -1,0 +1,51 @@
+Have not used Jupyter
+
+Nor NLP
+nor ML
+
+It seems to me that t=
+
+The project is to create a model for NER and apply it to the given data set using the tag line itself to confirm the 
+
+Unclear about: the current data set 
+
+Is the goal to apply the mdoel to the given data set and to compare to the tag colum for method validation
+
+sklearn.externals.joblib -- pickle replacement
+yeild instead of return is something new
+
+Resources:
+http://nlpforhackers.io/named-entity-extraction/
+
+Since I have not really implemented ML before, I started with finding resources. At http://nlpforhackers.io/named-entity-extraction/ there is an example which seemed to be an out of the box solution. My thought was to start at a high level and work my way down.
+
+"nltk.tag.ClassifierBasedTagger. Under the hood, it uses a NaiveBayes classifier for predicting sequences."
+
+Goals:
+ - identify important features
+ - write a parser for the dataset (should be fairly easy)
+ - understand how features are used for classification in NLTK
+ - understand if this is supervised or unsupervised learning
+
+--- From NLTK doc ---
+ A Naive Bayes classifier.  Naive Bayes classifiers are
+    paramaterized by two probability distributions:
+      - P(label) gives the probability that an input will receive each
+        label, given no information about the input's features.
+      - P(fname=fval|label) gives the probability that a given feature
+        (fname) will receive a given value (fval), given that the
+        label (label).
+
+FEEDBACK:::
+
+1) dead give-away that you're not versed in Jupiter notebooks is that you don't make use of comment/markdown boxes.
+Inline images 1
+
+2) Typically move most of the code to a .py file and call it though this isn't a big deal. 
+3) fold validation can be done out of the box with sklearn
+4) your visualisations are a little strange and completely non-standard, which isn't an issue in itself but I'm not sure what it is trying to show, which is the issue. Explanations of what you're plotting and what it means would be good but the plots aren't great in elucidating your point. Check out confusion matrix, feature importance plot. 
+5) I'm not sure what File vs GMB is...
+6) also it's difficult to convolute how're you doing the classification, should try either a supervised learning algorithm like sklearn or xgboost. Looks like it's just using the NER from nltk, which isn't ideal. 
+7) Also different modelling with CRF or HMM
+8) Generate features...
+9)You need to put in recommendations of how to address overfitting etc
